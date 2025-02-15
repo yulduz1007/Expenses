@@ -54,11 +54,11 @@ WSGI_APPLICATION = 'root.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'expense_db',  # PostgreSQL bazangiz nomi
-        'USER': 'postgres',  # PostgreSQL foydalanuvchi nomi
-        'PASSWORD': '1',  # PostgreSQL paroli
-        'HOST': 'localhost',  # Agar serverda bo'lsa, uning IP-manzilini kiriting
-        'PORT': '5432',  # PostgreSQL ning standart porti
+        'NAME': 'expense_db',
+        'USER': 'postgres',
+        'PASSWORD': '1',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 AUTH_USER_MODEL = 'apps.User'

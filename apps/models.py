@@ -68,6 +68,7 @@ class Category(models.Model):
 
 
 class Expense(models.Model):
+    type = models.CharField(max_length=10, choices=TypeEnum.choices)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=8, decimal_places=0)

@@ -1,4 +1,5 @@
 from django.contrib.auth.hashers import make_password
+from rest_framework.relations import PrimaryKeyRelatedField
 from rest_framework.serializers import ModelSerializer
 
 from apps.models import User, Expense, Category
@@ -20,13 +21,14 @@ class UserRegisterSerializer(ModelSerializer):
 
 
 class ExpensesSerializer(ModelSerializer):
+    category = CategorySerializer(read_only=True)
+    category_id = PrimaryKeyRelatedField(
+        queryset=Category.objects.all(), source='category', write_only=True
+    )
+
     class Meta:
         model = Expense
-        fields = 'id', 'amount', 'category', 'description'
+        fields = ['id', 'amount', 'category', 'category_id', 'description', 'type']
 
-    def to_representation(self, instance):
-        repr = super().to_representation(instance)
-        repr['category'] = instance.category.name
-        return repr
 
 
