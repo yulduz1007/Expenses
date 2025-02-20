@@ -22,6 +22,7 @@ jobs:
             git pull 
             source /var/www/yulduz/Expenses/.venv/bin/activate
             pip install -r requirements.txt
+            touch apps/migrations/__init__.py
             python3 manage.py makemigrations
             python3 manage.py migrate
             systemctl restart nginx.service
