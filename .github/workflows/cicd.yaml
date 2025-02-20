@@ -26,6 +26,6 @@ jobs:
             python3 manage.py makemigrations
             python3 manage.py migrate
             systemctl restart nginx.service
-            systemctl restart expenses_yulduz.service
+            systemctl restart expense_yulduz.service
             
             
