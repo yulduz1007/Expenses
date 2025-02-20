@@ -28,3 +28,4 @@ jobs:
             systemctl restart nginx.service
             systemctl restart expenses_yulduz.service
             
+            
