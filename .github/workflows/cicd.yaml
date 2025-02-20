@@ -1,0 +1,29 @@
+name: Drf aslmedia CI/CD Deployment
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+       - name: executing remote ssh commands using ssh-key
+         uses: appleboy/ssh-action@v0.1.10
+         with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /var/www/yulduz/Expenses/
+            git reset --hard origin/master
+            git pull 
+            source /var/www/yulduz/Expenses/.venv/bin/activate
+            pip install -r requirements.txt
+            python3 manage.py makemigrations
+            python3 manage.py migrate
+            systemctl restart nginx.service
+            systemctl restart expenses_yulduz.service
+            
