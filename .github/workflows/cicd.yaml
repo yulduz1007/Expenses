@@ -20,6 +20,7 @@ jobs:
             cd /var/www/yulduz/Expenses/
             git reset --hard origin/master
             git pull 
+            
             source /var/www/yulduz/Expenses/.venv/bin/activate
             pip install -r requirements.txt
             python3 manage.py makemigrations
