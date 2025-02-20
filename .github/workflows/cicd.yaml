@@ -22,8 +22,8 @@ jobs:
             git pull 
             source /var/www/yulduz/Expenses/.venv/bin/activate
             pip install -r requirements.txt
-            mkdir apps/migrations
-            touch migrations/__init__.py
+#            mkdir apps/migrations
+#            touch migrations/__init__.py
             
             python3 manage.py makemigrations
             python3 manage.py migrate
